@@ -1,0 +1,861 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Quiz Website</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <header class="header">
+        <div class="logo">
+            🎓 Student Quiz Website
+        </div>
+
+        <div class="header-actions">
+            <button id="themeToggle" class="icon-btn" title="Toggle dark mode">
+                🌙
+            </button>
+
+            <button id="settingsBtn" class="icon-btn" title="Settings">
+                ⚙️
+            </button>
+        </div>
+    </header>
+
+
+    <!-- MAIN APP -->
+    <main class="app-container">
+
+        <!-- HOME PAGE -->
+        <section id="home" class="page active">
+
+            <div class="hero">
+                <div class="hero-content">
+                    <span class="hero-badge">📚 Learn • Practice • Improve</span>
+
+                    <h1>Test Your Knowledge.</h1>
+
+                    <p>
+                        Practice subjects, challenge yourself,
+                        track your progress, and learn from your mistakes.
+                    </p>
+
+                    <button id="startQuizBtn" class="primary-btn">
+                        Start a Quiz →
+                    </button>
+                </div>
+            </div>
+
+
+            <!-- QUICK QUIZ -->
+            <div class="section">
+                <div class="section-title">
+                    <h2>Quick Start</h2>
+                    <p>Jump into a quiz instantly.</p>
+                </div>
+
+                <div class="quick-grid">
+
+                    <button class="quick-card" data-action="quick">
+                        <span class="quick-icon">⚡</span>
+                        <strong>Quick Quiz</strong>
+                        <small>5 mixed questions</small>
+                    </button>
+
+                    <button class="quick-card" data-action="random">
+                        <span class="quick-icon">🎲</span>
+                        <strong>Random Quiz</strong>
+                        <small>Questions from all subjects</small>
+                    </button>
+
+                    <button class="quick-card" data-action="mistakes">
+                        <span class="quick-icon">🧠</span>
+                        <strong>Practice Mistakes</strong>
+                        <small>Review questions you missed</small>
+                    </button>
+
+                    <button class="quick-card" data-action="saved">
+                        <span class="quick-icon">⭐</span>
+                        <strong>Saved Questions</strong>
+                        <small>Review your favorites</small>
+                    </button>
+
+                </div>
+            </div>
+
+
+            <!-- SUBJECTS -->
+            <div class="section">
+
+                <div class="section-title">
+                    <h2>Choose a Subject</h2>
+                    <p>Select one or more subjects to create your quiz.</p>
+                </div>
+
+                <div class="subject-grid">
+
+                    <button class="subject-card" data-subject="Biology">
+                        <span>🧬</span>
+                        <strong>Biology</strong>
+                        <small>200 questions</small>
+                    </button>
+
+                    <button class="subject-card" data-subject="Chemistry">
+                        <span>⚗️</span>
+                        <strong>Chemistry</strong>
+                        <small>200 questions</small>
+                    </button>
+
+                    <button class="subject-card" data-subject="Mathematics">
+                        <span>📐</span>
+                        <strong>Mathematics</strong>
+                        <small>200 questions</small>
+                    </button>
+
+                    <button class="subject-card" data-subject="Physics">
+                        <span>⚛️</span>
+                        <strong>Physics</strong>
+                        <small>200 questions</small>
+                    </button>
+
+                    <button class="subject-card" data-subject="Computer Science">
+                        <span>💻</span>
+                        <strong>Computer Science</strong>
+                        <small>200 questions</small>
+                    </button>
+
+                    <button class="subject-card" data-subject="English">
+                        <span>📚</span>
+                        <strong>English</strong>
+                        <small>200 questions</small>
+                    </button>
+
+                </div>
+            </div>
+
+
+            <!-- DASHBOARD PREVIEW -->
+            <div class="section">
+
+                <div class="section-title">
+                    <h2>Your Progress</h2>
+                    <p>Keep track of your learning journey.</p>
+                </div>
+
+                <div class="stats-grid">
+
+                    <div class="stat-card">
+                        <span>🎯</span>
+                        <strong id="totalQuizzes">0</strong>
+                        <small>Quizzes Completed</small>
+                    </div>
+
+                    <div class="stat-card">
+                        <span>📝</span>
+                        <strong id="totalQuestions">0</strong>
+                        <small>Questions Answered</small>
+                    </div>
+
+                    <div class="stat-card">
+                        <span>📊</span>
+                        <strong id="averageAccuracy">0%</strong>
+                        <small>Average Accuracy</small>
+                    </div>
+
+                    <div class="stat-card">
+                        <span>🔥</span>
+                        <strong id="currentStreak">0</strong>
+                        <small>Day Streak</small>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- QUIZ SETUP PAGE -->
+        <section id="setupPage" class="page">
+
+            <div class="page-heading">
+                <button class="back-btn" id="setupBackBtn">
+                    ← Back
+                </button>
+
+                <h1>Set Up Your Quiz</h1>
+                <p>Choose how you want to practice.</p>
+            </div>
+
+
+            <div class="setup-card">
+
+                <div class="setup-group">
+
+                    <h3>Subjects</h3>
+
+                    <div id="selectedSubjects" class="selected-subjects">
+                        <p class="muted">
+                            Choose at least one subject.
+                        </p>
+                    </div>
+
+                    <div class="setup-subject-grid">
+
+                        <button class="setup-subject" data-subject="Biology">
+                            🧬 Biology
+                        </button>
+
+                        <button class="setup-subject" data-subject="Chemistry">
+                            ⚗️ Chemistry
+                        </button>
+
+                        <button class="setup-subject" data-subject="Mathematics">
+                            📐 Mathematics
+                        </button>
+
+                        <button class="setup-subject" data-subject="Physics">
+                            ⚛️ Physics
+                        </button>
+
+                        <button class="setup-subject" data-subject="Computer Science">
+                            💻 Computer Science
+                        </button>
+
+                        <button class="setup-subject" data-subject="English">
+                            📚 English
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <div class="setup-group">
+
+                    <h3>Number of Questions</h3>
+
+                    <div class="choice-grid">
+
+                        <button class="choice-btn" data-count="5">
+                            5
+                        </button>
+
+                        <button class="choice-btn" data-count="10">
+                            10
+                        </button>
+
+                        <button class="choice-btn" data-count="15">
+                            15
+                        </button>
+
+                        <button class="choice-btn" data-count="20">
+                            20
+                        </button>
+
+                        <button class="choice-btn" data-count="30">
+                            30
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <div class="setup-group">
+
+                    <h3>Difficulty</h3>
+
+                    <div class="choice-grid">
+
+                        <button class="difficulty-btn" data-difficulty="Easy">
+                            Easy
+                        </button>
+
+                        <button class="difficulty-btn" data-difficulty="Medium">
+                            Medium
+                        </button>
+
+                        <button class="difficulty-btn" data-difficulty="Hard">
+                            Hard
+                        </button>
+
+                        <button class="difficulty-btn" data-difficulty="Mixed">
+                            Mixed
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <div class="setup-group">
+
+                    <h3>Quiz Mode</h3>
+
+                    <div class="mode-grid">
+
+                        <button class="mode-btn" data-mode="quiz">
+                            <strong>📝 Quiz</strong>
+                            <small>Review answers at the end</small>
+                        </button>
+
+                        <button class="mode-btn" data-mode="practice">
+                            <strong>🧠 Practice</strong>
+                            <small>Instant feedback</small>
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <div class="setup-group">
+
+                    <h3>Timer</h3>
+
+                    <div class="choice-grid">
+
+                        <button class="timer-btn" data-timer="0">
+                            No Timer
+                        </button>
+
+                        <button class="timer-btn" data-timer="300">
+                            5 min
+                        </button>
+
+                        <button class="timer-btn" data-timer="600">
+                            10 min
+                        </button>
+
+                        <button class="timer-btn" data-timer="900">
+                            15 min
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <button id="beginQuizBtn" class="primary-btn full-width">
+                    Begin Quiz →
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- QUIZ PAGE -->
+        <section id="quizPage" class="page">
+
+            <div class="quiz-top">
+
+                <button id="quizHomeBtn" class="back-btn">
+                    ← Exit Quiz
+                </button>
+
+                <div class="quiz-progress-info">
+                    <span id="questionCounter">Question 1 of 10</span>
+                    <span id="timerDisplay"></span>
+                </div>
+
+            </div>
+
+
+            <div class="progress-bar-container">
+                <div id="quizProgress" class="progress-bar"></div>
+            </div>
+
+
+            <div class="quiz-layout">
+
+                <div class="quiz-main">
+
+                    <div class="question-card">
+
+                        <div class="question-meta">
+
+                            <span id="questionSubject" class="question-tag">
+                                Biology
+                            </span>
+
+                            <span id="questionDifficulty" class="difficulty-tag">
+                                Easy
+                            </span>
+
+                        </div>
+
+                        <h2 id="questionText">
+                            Question will appear here.
+                        </h2>
+
+                        <div id="optionsContainer" class="options-container">
+                        </div>
+
+
+                        <div id="practiceFeedback" class="practice-feedback hidden">
+                        </div>
+
+
+                        <div class="question-actions">
+
+                            <button id="hintBtn" class="secondary-btn">
+                                💡 Hint
+                            </button>
+
+                            <button id="markBtn" class="secondary-btn">
+                                🔖 Mark for Review
+                            </button>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="quiz-navigation">
+
+                        <button id="previousBtn" class="secondary-btn">
+                            ← Previous
+                        </button>
+
+                        <button id="nextBtn" class="primary-btn">
+                            Next →
+                        </button>
+
+                        <button id="submitBtn" class="submit-btn hidden">
+                            Submit Quiz ✓
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- QUESTION NAVIGATOR -->
+                <aside class="question-navigator">
+
+                    <h3>Questions</h3>
+
+                    <div id="questionNumbers" class="question-numbers">
+                    </div>
+
+                    <div class="navigator-legend">
+
+                        <span>
+                            <i class="legend unanswered"></i>
+                            Unanswered
+                        </span>
+
+                        <span>
+                            <i class="legend answered"></i>
+                            Answered
+                        </span>
+
+                        <span>
+                            <i class="legend marked"></i>
+                            Review
+                        </span>
+
+                    </div>
+
+                </aside>
+
+            </div>
+
+        </section>
+
+
+        <!-- RESULT PAGE -->
+        <section id="resultPage" class="page">
+
+            <div class="result-container">
+
+                <div class="result-card">
+
+                    <div class="result-icon">
+                        🎓
+                    </div>
+
+                    <p class="result-label">
+                        Student Quiz Website
+                    </p>
+
+                    <h1 id="resultTitle">
+                        Quiz Complete!
+                    </h1>
+
+                    <div id="resultSubject" class="result-subject">
+                        Biology
+                    </div>
+
+                    <div id="resultPercentage" class="result-percentage">
+                        90%
+                    </div>
+
+                    <p id="resultScore">
+                        9 / 10 Correct
+                    </p>
+
+                    <div id="personalBest" class="personal-best hidden">
+                        🏆 Personal Best!
+                    </div>
+
+                    <div class="result-stats">
+
+                        <div>
+                            <strong id="correctCount">0</strong>
+                            <span>Correct</span>
+                        </div>
+
+                        <div>
+                            <strong id="incorrectCount">0</strong>
+                            <span>Incorrect</span>
+                        </div>
+
+                        <div>
+                            <strong id="unansweredCount">0</strong>
+                            <span>Unanswered</span>
+                        </div>
+
+                        <div>
+                            <strong id="resultTime">00:00</strong>
+                            <span>Time</span>
+                        </div>
+
+                    </div>
+
+
+                    <div class="result-actions">
+
+                        <button id="reviewBtn" class="primary-btn">
+                            📖 Review Answers
+                        </button>
+
+                        <button id="retryBtn" class="secondary-btn">
+                            🔄 Retry Quiz
+                        </button>
+
+                        <button id="mistakesBtn" class="secondary-btn">
+                            🧠 Practice Mistakes
+                        </button>
+
+                        <button id="shareBtn" class="secondary-btn">
+                            🔗 Share Result
+                        </button>
+
+                        <button id="resultHomeBtn" class="secondary-btn">
+                            🏠 Home
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- REVIEW PAGE -->
+        <section id="reviewPage" class="page">
+
+            <div class="page-heading">
+
+                <button id="reviewBackBtn" class="back-btn">
+                    ← Back to Result
+                </button>
+
+                <h1>Review Answers</h1>
+
+                <p>
+                    See what you answered and learn from the explanations.
+                </p>
+
+            </div>
+
+            <div id="reviewContainer" class="review-container">
+            </div>
+
+        </section>
+
+
+        <!-- DASHBOARD PAGE -->
+        <section id="dashboardPage" class="page">
+
+            <div class="page-heading">
+                  <button id="dashboardBackBtn" class="back-btn">
+                       ← Home
+                 </button>
+                <h1>📊 Your Progress</h1>
+
+                <p>
+                    Track your quiz journey and achievements.
+                </p>
+
+            </div>
+
+
+            <div class="dashboard-stats">
+
+                <div class="dashboard-stat">
+                    <span>🎓</span>
+                    <strong id="dashboardQuizzes">0</strong>
+                    <small>Quizzes</small>
+                </div>
+
+                <div class="dashboard-stat">
+                    <span>📝</span>
+                    <strong id="dashboardQuestions">0</strong>
+                    <small>Questions</small>
+                </div>
+
+                <div class="dashboard-stat">
+                    <span>🎯</span>
+                    <strong id="dashboardAccuracy">0%</strong>
+                    <small>Accuracy</small>
+                </div>
+
+                <div class="dashboard-stat">
+                    <span>🔥</span>
+                    <strong id="dashboardStreak">0</strong>
+                    <small>Day Streak</small>
+                </div>
+
+            </div>
+
+
+            <div class="dashboard-section">
+
+                <h2>📈 Last 7 Days</h2>
+
+                <div id="weeklyChart" class="weekly-chart">
+                </div>
+
+            </div>
+
+
+            <div class="dashboard-section">
+
+                <h2>🏆 Achievements</h2>
+
+                <div id="achievementsContainer" class="achievements-grid">
+                </div>
+
+            </div>
+
+
+            <div class="dashboard-section">
+
+                <h2>📚 Subject Progress</h2>
+
+                <div id="subjectProgressContainer">
+                </div>
+
+            </div>
+
+
+            <div class="dashboard-section">
+
+                <h2>🕐 Recent Results</h2>
+
+                <div id="recentResultsContainer">
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- SAVED QUESTIONS PAGE -->
+        <section id="savedPage" class="page">
+
+            <div class="page-heading">
+
+                <button id="savedBackBtn" class="back-btn">
+                    ← Home
+                </button>
+
+                <h1>⭐ Saved Questions</h1>
+
+                <p>Your favorite questions.</p>
+
+            </div>
+
+            <div id="savedQuestionsContainer" class="question-list">
+            </div>
+
+        </section>
+
+
+        <!-- SETTINGS PAGE -->
+        <section id="settingsPage" class="page">
+
+            <div class="page-heading">
+
+                <button id="settingsBackBtn" class="back-btn">
+                    ← Home
+                </button>
+
+                <h1>⚙️ Settings</h1>
+
+                <p>Customize your quiz experience.</p>
+
+            </div>
+
+
+            <div class="settings-card">
+
+                <div class="setting-item">
+
+                    <div>
+                        <strong>Dark Mode</strong>
+                        <small>Switch between light and dark mode.</small>
+                    </div>
+
+                    <button id="settingsThemeToggle" class="toggle-btn">
+                        🌙
+                    </button>
+
+                </div>
+
+
+                <div class="setting-item">
+
+                    <div>
+                        <strong>Color Theme</strong>
+                        <small>Choose your favorite accent color.</small>
+                    </div>
+
+                    <div id="colorThemes" class="color-themes">
+
+                        <button data-theme="purple">Purple</button>
+                        <button data-theme="blue">Blue</button>
+                        <button data-theme="pink">Pink</button>
+                        <button data-theme="green">Green</button>
+                        <button data-theme="orange">Orange</button>
+                        <button data-theme="red">Red</button>
+                        <button data-theme="teal">Teal</button>
+                        <button data-theme="indigo">Indigo</button>
+                        <button data-theme="rose">Rose</button>
+                        <button data-theme="slate">Slate</button>
+
+                    </div>
+
+                </div>
+
+
+                <div class="setting-item">
+
+                    <div>
+                        <strong>Emoji Theme</strong>
+                        <small>Choose the style of your quiz icons.</small>
+                    </div>
+
+                    <div id="emojiThemes" class="emoji-themes">
+
+                        <button data-emoji="🎓">🎓 Study</button>
+                        <button data-emoji="🌸">🌸 Soft</button>
+                        <button data-emoji="🚀">🚀 Focus</button>
+                        <button data-emoji="🧠">🧠 Brain</button>
+                        <button data-emoji="✨">✨ Spark</button>
+
+                    </div>
+
+                </div>
+
+
+                <div class="setting-item danger-zone">
+
+                    <div>
+                        <strong>Reset My Progress</strong>
+                        <small>
+                            Delete quiz history, saved questions,
+                            achievements, and streak data.
+                        </small>
+                    </div>
+
+                    <button id="resetProgressBtn" class="danger-btn">
+                        Reset Progress
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- TOAST -->
+    <div id="toast" class="toast">
+        <span id="toastMessage"></span>
+    </div>
+
+
+    <!-- SHARE MODAL -->
+    <div id="shareModal" class="modal hidden">
+
+        <div class="modal-content">
+
+            <button id="closeShareModal" class="modal-close">
+                ×
+            </button>
+
+            <h2>🔗 Share Your Result</h2>
+
+            <div id="shareCardPreview" class="share-card-preview">
+            </div>
+
+            <button id="copyShareLinkBtn" class="primary-btn full-width">
+                📋 Copy Share Link
+            </button>
+
+            <div class="share-buttons">
+
+                <button data-share="whatsapp">
+                    WhatsApp
+                </button>
+
+                <button data-share="facebook">
+                    Facebook
+                </button>
+
+                <button data-share="x">
+                    X
+                </button>
+
+                <button data-share="linkedin">
+                    LinkedIn
+                </button>
+
+                <button data-share="telegram">
+                    Telegram
+                </button>
+
+                <button data-share="reddit">
+                    Reddit
+                </button>
+
+                <button id="nativeShareBtn">
+                    📱 More...
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <script src="questions.js"></script>
+    <script src="script.js"></script>
+
+</body>
+</html>
