@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Student Study Planner</title>
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+
+<body>
+
+    <div class="container">
+
+
+        <!-- HEADER -->
+
+        <header>
+
+            <div class="header-top">
+
+                <div>
+
+                    <h1>Student Study Planner</h1>
+
+                    <p class="subtitle">
+                        Organize your studies, track your progress, and stay on top of your goals.
+                    </p>
+
+                </div>
+
+                <button
+                    id="themeButton"
+                    class="icon-button"
+                    title="Customize planner"
+                >
+                    🎨
+                </button>
+
+            </div>
+
+        </header>
+
+
+        <!-- CUSTOMIZATION PANEL -->
+
+        <section
+            id="customizationPanel"
+            class="customization-panel hidden"
+        >
+
+            <h2>Customize Your Planner</h2>
+
+            <div class="customization-grid">
+
+                <div>
+
+                    <label for="themeColor">
+                        Theme Color
+                    </label>
+
+                    <select id="themeColor">
+
+                        <option value="pink">Pink</option>
+                        <option value="blue">Blue</option>
+                        <option value="purple">Purple</option>
+                        <option value="green">Green</option>
+                        <option value="peach">Peach</option>
+
+                    </select>
+
+                </div>
+
+
+                <div>
+
+                    <label for="plannerSticker">
+                        Planner Sticker
+                    </label>
+
+                    <select id="plannerSticker">
+
+                        <option value="🎀">🎀 Bow</option>
+                        <option value="🌸">🌸 Flower</option>
+                        <option value="⭐">⭐ Star</option>
+                        <option value="📚">📚 Books</option>
+                        <option value="☕">☕ Coffee</option>
+                        <option value="✨">✨ Sparkles</option>
+                        <option value="🐸">🐸 Frog</option>
+
+                    </select>
+
+                </div>
+
+            </div>
+
+            <button
+                onclick="saveCustomization()"
+                class="small-button"
+            >
+                Save Customization
+            </button>
+
+        </section>
+
+
+        <!-- DAILY GOAL -->
+
+        <section class="dashboard-section">
+
+            <div class="section-title">
+
+                <div>
+
+                    <h2>Today's Study Goal</h2>
+
+                    <p>
+                        Set how much time you want to study today.
+                    </p>
+
+                </div>
+
+                <span id="currentSticker" class="sticker">
+                    🎀
+                </span>
+
+            </div>
+
+
+            <div class="goal-area">
+
+                <div class="goal-input">
+
+                    <label for="dailyGoal">
+                        Daily Goal (hours)
+                    </label>
+
+                    <input
+                        type="number"
+                        id="dailyGoal"
+                        min="0"
+                        step="0.5"
+                        placeholder="Example: 4"
+                    >
+
+                    <button
+                        onclick="saveDailyGoal()"
+                        class="primary-button"
+                    >
+                        Save Goal
+                    </button>
+
+                </div>
+
+
+                <div class="progress-area">
+
+                    <div class="progress-info">
+
+                        <span>Today's Progress</span>
+
+                        <strong id="progressPercentage">
+                            0%
+                        </strong>
+
+                    </div>
+
+                    <div class="progress-background">
+
+                        <div
+                            id="dailyProgress"
+                            class="progress-bar"
+                        ></div>
+
+                    </div>
+
+                    <p id="progressText">
+                        0 / 0 hours completed
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ADD TASK -->
+
+        <section class="dashboard-section">
+
+            <h2>Add Study Task</h2>
+
+            <p class="section-description">
+                Create a study task with a subject, deadline, priority, and planned study time.
+            </p>
+
+
+            <form id="taskForm">
+
+                <div class="form-grid">
+
+                    <div class="form-group">
+
+                        <label for="subject">
+                            Subject
+                        </label>
+
+                        <input
+                            type="text"
+                            id="subject"
+                            placeholder="Example: Computer Science"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="taskName">
+                            Task
+                        </label>
+
+                        <input
+                            type="text"
+                            id="taskName"
+                            placeholder="Example: JavaScript practice"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="taskDate">
+                            Date
+                        </label>
+
+                        <input
+                            type="date"
+                            id="taskDate"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="taskTime">
+                            Planned Study Time (hours)
+                        </label>
+
+                        <input
+                            type="number"
+                            id="taskTime"
+                            min="0.5"
+                            step="0.5"
+                            placeholder="Example: 1.5"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="priority">
+                            Priority
+                        </label>
+
+                        <select id="priority">
+
+                            <option value="High">
+                                High
+                            </option>
+
+                            <option value="Medium" selected>
+                                Medium
+                            </option>
+
+                            <option value="Low">
+                                Low
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="taskSticker">
+                            Sticker
+                        </label>
+
+                        <select id="taskSticker">
+
+                            <option value="📚">📚 Books</option>
+                            <option value="⭐">⭐ Star</option>
+                            <option value="🎀">🎀 Bow</option>
+                            <option value="🌸">🌸 Flower</option>
+                            <option value="✨">✨ Sparkles</option>
+                            <option value="☕">☕ Coffee</option>
+                            <option value="🐸">🐸 Frog</option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="taskColor">
+                            Task Color
+                        </label>
+
+                        <input
+                            type="color"
+                            id="taskColor"
+                            value="#f7b6d2"
+                            class="color-input"
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <button
+                    type="submit"
+                    class="primary-button add-task-button"
+                >
+                    + Add Study Task
+                </button>
+
+            </form>
+
+        </section>
+
+
+        <!-- TODAY'S TASKS -->
+
+        <section class="dashboard-section">
+
+            <div class="section-title">
+
+                <div>
+
+                    <h2>Today's Tasks</h2>
+
+                    <p>
+                        Your study tasks for today.
+                    </p>
+
+                </div>
+
+                <span id="todayTaskCount">
+                    0 tasks
+                </span>
+
+            </div>
+
+
+            <div id="todayTasks" class="task-list">
+
+                <p class="empty-message">
+                    No tasks for today yet.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- ALL TASKS -->
+
+        <section class="dashboard-section">
+
+            <div class="section-title">
+
+                <div>
+
+                    <h2>All Study Tasks</h2>
+
+                    <p>
+                        View and manage all your planned tasks.
+                    </p>
+
+                </div>
+
+                <div class="filter-area">
+
+                    <select id="taskFilter">
+
+                        <option value="all">
+                            All Tasks
+                        </option>
+
+                        <option value="pending">
+                            Pending
+                        </option>
+
+                        <option value="completed">
+                            Completed
+                        </option>
+
+                    </select>
+
+                </div>
+
+            </div>
+
+
+            <div id="allTasks" class="task-list">
+
+                <p class="empty-message">
+                    No study tasks yet.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- WEEKLY OVERVIEW -->
+
+        <section class="dashboard-section">
+
+            <h2>Weekly Overview</h2>
+
+            <p class="section-description">
+                See how many tasks you have planned and completed each day.
+            </p>
+
+
+            <div
+                id="weeklyOverview"
+                class="weekly-grid"
+            ></div>
+
+        </section>
+
+
+        <!-- SUBJECT PROGRESS -->
+
+        <section class="dashboard-section">
+
+            <h2>Subject Progress</h2>
+
+            <p class="section-description">
+                Track your progress across different subjects.
+            </p>
+
+
+            <div
+                id="subjectProgress"
+                class="subject-progress-list"
+            >
+
+                <p class="empty-message">
+                    Add study tasks to see subject progress.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- STUDY STREAK -->
+
+        <section class="dashboard-section streak-section">
+
+            <div class="streak-icon">
+                🔥
+            </div>
+
+            <div>
+
+                <h2>Study Streak</h2>
+
+                <p>
+                    Keep completing your study tasks to build your streak.
+                </p>
+
+                <strong id="streakCount">
+                    0 days
+                </strong>
+
+            </div>
+
+        </section>
+
+
+        <!-- TIPS -->
+
+        <section class="tips-section">
+
+            <h2>Study Tips</h2>
+
+            <ul>
+
+                <li>
+                    Break large assignments into smaller tasks.
+                </li>
+
+                <li>
+                    Set realistic study goals for each day.
+                </li>
+
+                <li>
+                    Prioritize important or time-sensitive work.
+                </li>
+
+                <li>
+                    Leave some time for rest and unexpected tasks.
+                </li>
+
+            </ul>
+
+        </section>
+
+
+        <!-- RESET -->
+
+        <div class="reset-area">
+
+            <button
+                onclick="resetPlanner()"
+                class="reset-button"
+            >
+                Reset Planner
+            </button>
+
+        </div>
+
+
+    </div>
+
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
