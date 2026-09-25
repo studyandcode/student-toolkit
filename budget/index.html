@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Student Budget Planner</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <header>
+            <h1>Student Budget Planner</h1>
+
+            <p class="subtitle">
+                Plan your monthly budget, track your spending, and stay in control of your money.
+            </p>
+        </header>
+
+
+        <section class="section">
+
+            <h2>Monthly Income</h2>
+
+            <div class="input-group">
+
+                <label for="income">Total Monthly Income</label>
+
+                <div class="money-input">
+
+                    <select id="currency">
+                        <option value="$">$ USD</option>
+                        <option value="৳">৳ BDT</option>
+                        <option value="€">€ EUR</option>
+                        <option value="£">£ GBP</option>
+                    </select>
+
+                    <input
+                        type="number"
+                        id="income"
+                        placeholder="Enter your income"
+                        min="0"
+                    >
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <section class="section">
+
+            <div class="section-heading">
+
+                <div>
+                    <h2>Monthly Expenses</h2>
+
+                    <p class="helper-text">
+                        Enter how much you spent and your planned budget for each category.
+                    </p>
+                </div>
+
+            </div>
+
+
+            <div class="expense-grid">
+
+
+                <div class="expense-card">
+
+                    <label for="housing">Housing</label>
+
+                    <input
+                        type="number"
+                        id="housing"
+                        placeholder="Spent"
+                        min="0"
+                    >
+
+                    <input
+                        type="number"
+                        id="housingBudget"
+                        placeholder="Budget Limit"
+                        min="0"
+                    >
+
+                </div>
+
+
+                <div class="expense-card">
+
+                    <label for="food">Food</label>
+
+                    <input
+                        type="number"
+                        id="food"
+                        placeholder="Spent"
+                        min="0"
+                    >
+
+                    <input
+                        type="number"
+                        id="foodBudget"
+                        placeholder="Budget Limit"
+                        min="0"
+                    >
+
+                </div>
+
+
+                <div class="expense-card">
+
+                    <label for="transport">Transportation</label>
+
+                    <input
+                        type="number"
+                        id="transport"
+                        placeholder="Spent"
+                        min="0"
+                    >
+
+                    <input
+                        type="number"
+                        id="transportBudget"
+                        placeholder="Budget Limit"
+                        min="0"
+                    >
+
+                </div>
+
+
+                <div class="expense-card">
+
+                    <label for="books">Books & Supplies</label>
+
+                    <input
+                        type="number"
+                        id="books"
+                        placeholder="Spent"
+                        min="0"
+                    >
+
+                    <input
+                        type="number"
+                        id="booksBudget"
+                        placeholder="Budget Limit"
+                        min="0"
+                    >
+
+                </div>
+
+
+                <div class="expense-card">
+
+                    <label for="phone">Phone & Internet</label>
+
+                    <input
+                        type="number"
+                        id="phone"
+                        placeholder="Spent"
+                        min="0"
+                    >
+
+                    <input
+                        type="number"
+                        id="phoneBudget"
+                        placeholder="Budget Limit"
+                        min="0"
+                    >
+
+                </div>
+
+
+                <div class="expense-card">
+
+                    <label for="entertainment">Entertainment</label>
+
+                    <input
+                        type="number"
+                        id="entertainment"
+                        placeholder="Spent"
+                        min="0"
+                    >
+
+                    <input
+                        type="number"
+                        id="entertainmentBudget"
+                        placeholder="Budget Limit"
+                        min="0"
+                    >
+
+                </div>
+
+
+                <div class="expense-card">
+
+                    <label for="shopping">Shopping</label>
+
+                    <input
+                        type="number"
+                        id="shopping"
+                        placeholder="Spent"
+                        min="0"
+                    >
+
+                    <input
+                        type="number"
+                        id="shoppingBudget"
+                        placeholder="Budget Limit"
+                        min="0"
+                    >
+
+                </div>
+
+
+                <div class="expense-card">
+
+                    <label for="other">Other</label>
+
+                    <input
+                        type="number"
+                        id="other"
+                        placeholder="Spent"
+                        min="0"
+                    >
+
+                    <input
+                        type="number"
+                        id="otherBudget"
+                        placeholder="Budget Limit"
+                        min="0"
+                    >
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <div class="buttons">
+
+            <button onclick="calculateBudget()" class="calculate-button">
+                Calculate Budget
+            </button>
+
+            <button onclick="resetPlanner()" class="reset">
+                Reset
+            </button>
+
+        </div>
+
+
+        <section class="results-section">
+
+            <h2>Budget Summary</h2>
+
+            <div class="result">
+
+                <div class="result-card">
+                    <span>Total Income</span>
+                    <strong id="totalIncome">$0.00</strong>
+                </div>
+
+                <div class="result-card">
+                    <span>Total Expenses</span>
+                    <strong id="totalExpenses">$0.00</strong>
+                </div>
+
+                <div class="result-card">
+                    <span>Remaining Balance</span>
+                    <strong id="remaining">$0.00</strong>
+                </div>
+
+                <div class="result-card">
+                    <span>Percentage Spent</span>
+                    <strong id="percentage">0%</strong>
+                </div>
+
+            </div>
+
+
+            <div id="status" class="status">
+                Enter your income and expenses to see your budget status.
+            </div>
+
+        </section>
+
+
+        <section class="breakdown-section">
+
+            <h2>Spending Breakdown</h2>
+
+            <div id="breakdown">
+
+                <p class="empty-message">
+                    Calculate your budget to see your spending breakdown.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <section class="tips-section">
+
+            <h2>Budget Tips</h2>
+
+            <ul>
+                <li>Set realistic limits for each spending category.</li>
+                <li>Keep track of your expenses throughout the month.</li>
+                <li>Try to keep some money available for unexpected expenses.</li>
+            </ul>
+
+        </section>
+
+
+    </div>
+
+
+    <script src="script.js"></script>
+
+</body>
+</html>
