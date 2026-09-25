@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Student Toolkit</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header class="header">
+
+        <div class="brand">
+            <h1>Student Toolkit</h1>
+            <p>Your all-in-one student productivity dashboard</p>
+        </div>
+
+        <div class="theme-area">
+
+            <button id="themeButton" class="theme-button">
+                🌙
+            </button>
+
+            <div id="themePanel" class="theme-panel">
+
+                <h3>Customize Theme</h3>
+
+                <p>Appearance</p>
+
+                <div class="mode-buttons">
+                    <button onclick="setMode('light')">☀️ Light</button>
+                    <button onclick="setMode('dark')">🌙 Dark</button>
+                </div>
+
+                <p>Accent Color</p>
+
+                <div class="color-options">
+
+                    <button
+                        class="color purple"
+                        onclick="setAccent('#7c3aed')">
+                    </button>
+
+                    <button
+                        class="color blue"
+                        onclick="setAccent('#2563eb')">
+                    </button>
+
+                    <button
+                        class="color pink"
+                        onclick="setAccent('#db2777')">
+                    </button>
+
+                    <button
+                        class="color green"
+                        onclick="setAccent('#059669')">
+                    </button>
+
+                    <button
+                        class="color orange"
+                        onclick="setAccent('#ea580c')">
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </header>
+
+
+    <main class="container">
+
+        <section class="welcome">
+
+            <h2>Welcome! 👋</h2>
+
+            <p>
+                Choose a tool below to manage your studies,
+                quizzes, grades, and budget.
+            </p>
+
+        </section>
+
+
+        <section class="tools">
+
+            <!-- GPA Calculator -->
+
+            <div class="tool-card">
+
+                <div class="tool-icon">📊</div>
+
+                <h3>Student GPA Calculator</h3>
+
+                <p>
+                    Calculate your GPA quickly and easily.
+                </p>
+
+                <button
+                    class="tool-button"
+                    onclick="openTool('gpa')">
+                    Open Calculator
+                </button>
+
+            </div>
+
+
+            <!-- Quiz Website -->
+
+            <div class="tool-card">
+
+                <div class="tool-icon">📝</div>
+
+                <h3>Student Quiz Website</h3>
+
+                <p>
+                    Test your knowledge with interactive quizzes.
+                </p>
+
+                <button
+                    class="tool-button"
+                    onclick="openTool('quiz')">
+                    Start Quiz
+                </button>
+
+            </div>
+
+
+            <!-- Study Planner -->
+
+            <div class="tool-card">
+
+                <div class="tool-icon">📅</div>
+
+                <h3>Student Study Planner</h3>
+
+                <p>
+                    Organize your study sessions and daily tasks.
+                </p>
+
+                <button
+                    class="tool-button"
+                    onclick="openTool('planner')">
+                    Open Planner
+                </button>
+
+            </div>
+
+
+            <!-- Budget Planner -->
+
+            <div class="tool-card">
+
+                <div class="tool-icon">💰</div>
+
+                <h3>Student Budget Planner</h3>
+
+                <p>
+                    Track your expenses and manage your budget.
+                </p>
+
+                <button
+                    class="tool-button"
+                    onclick="openTool('budget')">
+                    Open Budget
+                </button>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <footer>
+
+        <p>Student Toolkit</p>
+
+    </footer>
+
+
+    <script src="script.js"></script>
+
+</body>
+</html>
