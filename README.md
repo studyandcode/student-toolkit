@@ -240,7 +240,7 @@ Student Toolkit/
 
 🎥 \*\*Video:\*\*
 
-\(https://github.com/studyandcode/student-toolkit/blob/main/student-toolkit-demo.mp4)
+\[Watch the video](https://github.com/studyandcode/student-toolkit/blob/main/student-toolkit-demo.mp4)
 
 
 
